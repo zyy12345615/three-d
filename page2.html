@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定制产品服务 - 企业官网</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#64748b',
+                        accent: '#f97316',
+                        dark: '#1e293b',
+                        light: '#f8fafc'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .scale-hover {
+                transition: transform 0.3s ease;
+            }
+            .scale-hover:hover {
+                transform: scale(1.05);
+            }
+        }
+    </style>
+</head>
+
+<body class="font-inter bg-gray-50 min-h-screen">
+    <!-- 导航栏 -->
+    <header class="bg-white shadow-md fixed w-full top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-primary">企业品牌</a>
+                </div>
+
+                <!-- 桌面导航 -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-primary font-medium transition-all">首页</a>
+                    <a href="page2.html" class="text-primary font-medium border-b-2 border-primary pb-1">定制服务</a>
+                    <a href="page3.html" class="text-gray-700 hover:text-primary font-medium transition-all">关于我们</a>
+                    <a href="page4.html" class="text-gray-700 hover:text-primary font-medium transition-all">合作公司</a>
+                    <a href="page5.html" class="text-gray-700 hover:text-primary font-medium transition-all">已有产品</a>
+                </nav>
+
+                <!-- 登录/用户区域 -->
+                <div class="flex items-center">
+                    <button id="loginBtn"
+                        class="hidden md:block px-4 py-2 text-sm font-medium text-primary border border-primary rounded-md hover:bg-primary/5 transition-colors mr-2">
+                        登录
+                    </button>
+                    <div id="userMenu" class="hidden items-center space-x-2">
+                        <span id="userName" class="text-sm font-medium"></span>
+                        <div class="relative">
+                            <button id="userDropdownBtn"
+                                class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center hover:bg-gray-300 transition-colors">
+                                <i class="fa fa-user text-gray-600"></i>
+                            </button>
+                            <div id="userDropdown"
+                                class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 hidden z-50">
+                                <a href="admin.html" id="adminLink"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hidden">管理面板</a>
+                                <a href="#" id="logoutBtn"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">退出登录</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 移动端菜单按钮 -->
+                    <button id="mobileMenuBtn"
+                        class="md:hidden ml-4 w-10 h-10 rounded-md flex items-center justify-center hover:bg-gray-100">
+                        <i class="fa fa-bars text-gray-700"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="pt-16 py-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h1 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">定制产品服务</h1>
+                <p class="text-gray-600 max-w-2xl mx-auto">根据您的需求，定制专属于您的独特产品，我们提供全方位的个性化解决方案</p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div class="flex flex-col lg:flex-row">
+                    <div class="lg:w-1/2 p-6 md:p-10">
+                        <h2 class="text-2xl font-bold mb-6">个性化定制</h2>
+                        <p class="text-gray-600 mb-8">
+                            无论您需要为企业活动定制纪念品，还是为个人打造独特礼物，我们都能满足您的需求。填写下方表单，开始您的定制之旅。
+                        </p>
+
+                        <form id="customForm" class="space-y-6">
+                            <div>
+                                <label for="productType" class="block text-sm font-medium text-gray-700 mb-1">产品类型 <span
+                                        class="text-red-500">*</span></label>
+                                <select id="productType" name="productType"
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-colors">
+                                    <option value="">请选择产品类型</option>
+                                    <option value="office">办公用品</option>
+                                    <option value="clothing">服装服饰</option>
+                                    <option value="home">家居用品</option>
+                                    <option value="gift">礼品礼盒</option>
+                                    <option value="other">其他定制</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="productSize" class="block text-sm font-medium text-gray-700 mb-1">产品尺寸 <span
+                                        class="text-red-500">*</span></label>
+                                <input type="text" id="productSize" name="productSize" placeholder="例如：20cm x 30cm 或 L码"
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-colors">
+                            </div>
+
+                            <div>
+                                <label for="productColor" class="block text-sm font-medium text-gray-700 mb-1">产品颜色
+                                    <span class="text-red-500">*</span></label>
+                                <div class="flex flex-wrap gap-3 mb-3">
+                                    <button type="button"
+                                        class="w-8 h-8 rounded-full bg-black border-2 border-transparent hover:border-gray-400 color-option"
+                                        data-color="黑色"></button>
+                                    <button type="button"
+                                        class="w-8 h-8 rounded-full bg-white border-2 border-gray-300 hover:border-gray-400 color-option"
+                                        data-color="白色"></button>
+                                    <button type="button"
+                                        class="w-8 h-8 rounded-full bg-red-500 border-2 border-transparent hover:border-gray-400 color-option"
+                                        data-color="红色"></button>
+                                    <button type="button"
+                                        class="w-8 h-8 rounded-full bg-blue-500 border-2 border-transparent hover:border-gray-400 color-option"
+                                        data-color="蓝色"></button>
+                                    <button type="button"
+                                        class="w-8 h-8 rounded-full bg-green-500 border-2 border-transparent hover:border-gray-400 color-option"
+                                        data-color="绿色"></button>
+                                    <button type="button"
+                                        class="w-8 h-8 rounded-full bg-yellow-500 border-2 border-transparent hover:border-gray-400 color-option"
+                                        data-color="黄色"></button>
+                                    <button type="button"
+                                        class="w-8 h-8 rounded-full bg-purple-500 border-2 border-transparent hover:border-gray-400 color-option"
+                                        data-color="紫色"></button>
+                                    <button type="button"
+                                        class="w-8 h-8 rounded-full bg-gray-500 border-2 border-transparent hover:border-gray-400 color-option"
+                                        data-color="灰色"></button>
+                                </div>
+                                <input type="text" id="productColor" name="productColor" placeholder="选择颜色或输入其他颜色"
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-colors">
+                            </div>
+
+                            <div>
+                                <label for="quantity" class="block text-sm font-medium text-gray-700 mb-1">定制数量 <span
+                                        class="text-red-500">*</span></label>
+                                <input type="number" id="quantity" name="quantity" min="1" placeholder="请输入定制数量"
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-colors">
+                            </div>
+
+                            <div>
+                                <label for="deliveryDate"
+                                    class="block text-sm font-medium text-gray-700 mb-1">期望交付日期</label>
+                                <input type="date" id="deliveryDate" name="deliveryDate"
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-colors">
+                            </div>
+
+                            <div>
+                                <label for="customRequirements"
+                                    class="block text-sm font-medium text-gray-700 mb-1">个性化需求 <span
+                                        class="text-red-500">*</span></label>
+                                <textarea id="customRequirements" name="customRequirements" rows="4"
+                                    placeholder="请详细描述您的定制需求，例如图案、文字、材质、特殊工艺等..."
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-colors"></textarea>
+                            </div>
+
+                            <div>
+                                <label for="contactInfo" class="block text-sm font-medium text-gray-700 mb-1">联系方式 <span
+                                        class="text-red-500">*</span></label>
+                                <input type="text" id="contactInfo" name="contactInfo" placeholder="请输入您的电话或微信"
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-colors">
+                            </div>
+
+                            <div id="loginRequiredAlert"
+                                class="hidden p-4 bg-amber-50 border border-amber-200 rounded-md text-amber-800 text-sm">
+                                <i class="fa fa-info-circle mr-2"></i> 请先登录以提交定制需求
+                            </div>
+
+                            <button type="submit" id="submitCustomBtn"
+                                class="w-full px-6 py-3 bg-primary text-white font-medium rounded-md hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">
+                                提交定制需求
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="lg:w-1/2 bg-gray-50 p-6 md:p-10 flex items-center justify-center">
+                        <div class="max-w-md w-full">
+                            <img src="./images/5.png" alt="定制产品示例"
+                                class="w-[500px] h-[333px] object-cover rounded-lg shadow-lg mb-8 scale-hover">
+
+                            <h3 class="text-xl font-semibold mb-4">定制流程</h3>
+                            <ul class="space-y-5 mb-8">
+                                <li class="flex items-start">
+                                    <div
+                                        class="flex-shrink-0 w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center mr-4 mt-0.5">
+                                        1
+                                    </div>
+                                    <div>
+                                        <p class="font-medium">提交需求</p>
+                                        <p class="text-sm text-gray-600">填写定制需求表单，上传设计素材</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <div
+                                        class="flex-shrink-0 w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center mr-4 mt-0.5">
+                                        2
+                                    </div>
+                                    <div>
+                                        <p class="font-medium">方案确认</p>
+                                        <p class="text-sm text-gray-600">我们提供设计方案和报价，等待您确认</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <div
+                                        class="flex-shrink-0 w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center mr-4 mt-0.5">
+                                        3
+                                    </div>
+                                    <div>
+                                        <p class="font-medium">支付定金</p>
+                                        <p class="text-sm text-gray-600">确认方案后,支付30%定金开始生产</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <div
+                                        class="flex-shrink-0 w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center mr-4 mt-0.5">
+                                        4
+                                    </div>
+                                    <div>
+                                        <p class="font-medium">生产制作</p>
+                                        <p class="text-sm text-gray-600">按确认方案进行生产制作，定期反馈进度</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <div
+                                        class="flex-shrink-0 w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center mr-4 mt-0.5">
+                                        5
+                                    </div>
+                                    <div>
+                                        <p class="font-medium">验收交付</p>
+                                        <p class="text-sm text-gray-600">完成制作后，支付尾款并安排配送</p>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <div class="bg-primary/5 p-4 rounded-lg">
+                                <h4 class="font-semibold mb-2 flex items-center">
+                                    <i class="fa fa-lightbulb-o text-primary mr-2"></i> 定制小贴士
+                                </h4>
+                                <ul class="text-sm text-gray-600 space-y-2">
+                                    <li class="flex items-start">
+                                        <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                                        <span>定制数量越多，单价越优惠</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                                        <span>请提前1-2周提交定制需求，以便安排生产</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                                        <span>复杂定制可联系客服获取专业建议</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 常见定制类型 -->
+            <div class="mt-16">
+                <h2 class="text-2xl font-bold text-center mb-10">常见定制类型</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white rounded-xl shadow-md p-6 text-center scale-hover">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fa fa-briefcase text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">办公用品</h3>
+                        <p class="text-gray-600 text-sm">
+                            笔记本、文件夹、笔、台历等各类办公文具定制
+                        </p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-md p-6 text-center scale-hover">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fa fa-shopping-bag text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">服装服饰</h3>
+                        <p class="text-gray-600 text-sm">
+                            T恤、卫衣、帽子、工作服等各类服饰定制
+                        </p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-md p-6 text-center scale-hover">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fa fa-home text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">家居用品</h3>
+                        <p class="text-gray-600 text-sm">
+                            抱枕、水杯、装饰画、收纳盒等家居产品定制
+                        </p>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-md p-6 text-center scale-hover">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fa fa-gift text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2">礼品礼盒</h3>
+                        <p class="text-gray-600 text-sm">
+                            节日礼品、企业福利、商务馈赠等礼盒定制
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12 relative z-10">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">企业品牌</h3>
+                    <p class="text-gray-400 mb-4">专注于提供高质量产品和定制服务，满足客户多样化需求。</p>
+
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">快速链接</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-all">首页</a></li>
+                        <li><a href="page2.html" class="text-gray-400 hover:text-white transition-all">定制服务</a></li>
+                        <li><a href="page3.html" class="text-gray-400 hover:text-white transition-all">关于我们</a></li>
+                        <li><a href="page4.html" class="text-gray-400 hover:text-white transition-all">合作公司</a></li>
+                        <li><a href="page5.html" class="text-gray-400 hover:text-white transition-all">已有产品</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">联系我们</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fa fa-map-marker mt-1 mr-3 text-gray-400"></i>
+                            <span class="text-gray-400">山东省济南市长清区大学科技园大学路1号</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-phone mr-3 text-gray-400"></i>
+                            <span class="text-gray-400">98+ 190 0000 0000</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-envelope mr-3 text-gray-400"></i>
+                            <span class="text-gray-400">contact@example.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">订阅通讯</h4>
+                    <p class="text-gray-400 mb-4">订阅我们的通讯，获取最新产品和活动信息。</p>
+                    <form class="flex">
+                        <input type="email" placeholder="您的邮箱地址"
+                            class="px-4 py-2 rounded-l-lg w-full focus:outline-none text-dark">
+                        <button type="submit"
+                            class="bg-primary hover:bg-primary/90 px-4 py-2 rounded-r-lg transition-all">
+                            <i class="fa fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500">
+                <p>&copy;3D环梦工坊文创工作室保留所有权利</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 登录模态框 -->
+    <div id="loginModal"
+        class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-md p-8 transform transition-all">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold">用户登录</h3>
+                <button id="closeLoginModal" class="text-gray-500 hover:text-gray-700 transition-colors">
+                    <i class="fa fa-times text-xl"></i>
+                </button>
+            </div>
+
+            <form id="loginForm" class="space-y-6">
+                <div>
+                    <label for="username" class="block text-sm font-medium text-gray-700 mb-1">用户名</label>
+                    <input type="text" id="username" name="username" placeholder="请输入用户名"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-colors">
+                </div>
+
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-1">密码</label>
+                    <input type="password" id="password" name="password" placeholder="请输入密码"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-colors">
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="rememberMe" name="rememberMe"
+                            class="w-4 h-4 text-primary focus:ring-primary border-gray-300 rounded">
+                        <label for="rememberMe" class="ml-2 block text-sm text-gray-700">记住我</label>
+                    </div>
+                    <a href="#" class="text-sm text-primary hover:underline">忘记密码?</a>
+                </div>
+
+                <div id="loginError" class="hidden p-3 bg-red-50 border border-red-200 rounded-md text-red-700 text-sm">
+                    <i class="fa fa-exclamation-circle mr-2"></i> 用户名或密码错误
+                </div>
+
+                <button type="submit"
+                    class="w-full px-6 py-3 bg-primary text-white font-medium rounded-md hover:bg-primary/90 transition-colors">
+                    登录
+                </button>
+            </form>
+
+            <div class="mt-6 text-center">
+                <p class="text-sm text-gray-600">
+                    管理员账号: admin / 密码: admin123<br>
+                    普通用户: user / 密码: user123
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 成功提示 -->
+    <div id="successToast"
+        class="fixed bottom-6 right-6 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 flex items-center">
+        <i class="fa fa-check-circle mr-2"></i>
+        <span id="successMessage"></span>
+    </div>
+
+    <script>
+        // 全局变量
+        let currentUser = null;
+        let customRequests = JSON.parse(localStorage.getItem('customRequests')) || [
+            { id: 1, user: '张三', productType: '办公用品', size: '20cm x 30cm', color: '蓝色', quantity: 50, requirements: '请在封面印制公司LOGO', contact: '13800138000', status: '待处理', time: '2023-06-15 10:30' }
+        ];
+
+        // 初始化页面
+        document.addEventListener('DOMContentLoaded', function () {
+            // 检查本地存储中的用户信息
+            const savedUser = localStorage.getItem('currentUser');
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+                updateUserInterface();
+            }
+
+            // 移动端菜单切换
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            mobileMenuBtn.addEventListener('click', function () {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // 颜色选择器
+            const colorOptions = document.querySelectorAll('.color-option');
+            const colorInput = document.getElementById('productColor');
+
+            colorOptions.forEach(option => {
+                option.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    // 移除所有选中状态
+                    colorOptions.forEach(opt => opt.classList.remove('border-primary'));
+
+                    // 添加当前选中状态
+                    this.classList.add('border-primary');
+
+                    // 设置输入框值
+                    colorInput.value = this.getAttribute('data-color');
+                });
+            });
+
+            // 登录模态框
+            const loginBtn = document.getElementById('loginBtn');
+            const mobileLoginBtn = document.getElementById('mobileLoginBtn');
+            const loginModal = document.getElementById('loginModal');
+            const closeLoginModal = document.getElementById('closeLoginModal');
+
+            loginBtn.addEventListener('click', function () {
+                loginModal.classList.remove('hidden');
+            });
+
+            mobileLoginBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                loginModal.classList.remove('hidden');
+                mobileMenu.classList.add('hidden');
+            });
+
+            closeLoginModal.addEventListener('click', function () {
+                loginModal.classList.add('hidden');
+                document.getElementById('loginError').classList.add('hidden');
+                document.getElementById('loginForm').reset();
+            });
+
+            // 点击模态框外部关闭
+            loginModal.addEventListener('click', function (e) {
+                if (e.target === loginModal) {
+                    loginModal.classList.add('hidden');
+                    document.getElementById('loginError').classList.add('hidden');
+                    document.getElementById('loginForm').reset();
+                }
+            });
+
+            // 登录表单提交
+            const loginForm = document.getElementById('loginForm');
+            loginForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                const rememberMe = document.getElementById('rememberMe').checked;
+
+                // 简单的登录验证
+                if ((username === 'admin' && password === 'admin123') ||
+                    (username === 'user' && password === 'user123')) {
+
+                    // 保存用户信息
+                    currentUser = {
+                        username: username,
+                        role: username === 'admin' ? 'admin' : 'user'
+                    };
+
+                    if (rememberMe) {
+                        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                    } else {
+                        sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
+                    }
+
+                    // 更新界面
+                    updateUserInterface();
+
+                    // 关闭模态框
+                    loginModal.classList.add('hidden');
+                    document.getElementById('loginForm').reset();
+
+                    // 显示成功提示
+                    showSuccessToast('登录成功！');
+                } else {
+                    document.getElementById('loginError').classList.remove('hidden');
+                }
+            });
+
+            // 用户下拉菜单
+            const userDropdownBtn = document.getElementById('userDropdownBtn');
+            const userDropdown = document.getElementById('userDropdown');
+
+            userDropdownBtn.addEventListener('click', function () {
+                userDropdown.classList.toggle('hidden');
+            });
+
+            // 点击外部关闭下拉菜单
+            document.addEventListener('click', function (e) {
+                if (!userDropdownBtn.contains(e.target) && !userDropdown.contains(e.target)) {
+                    userDropdown.classList.add('hidden');
+                }
+            });
+
+            // 退出登录
+            const logoutBtn = document.getElementById('logoutBtn');
+            logoutBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                currentUser = null;
+                localStorage.removeItem('currentUser');
+                sessionStorage.removeItem('currentUser');
+
+                updateUserInterface();
+                userDropdown.classList.add('hidden');
+
+                showSuccessToast('已成功退出登录！');
+            });
+
+            // 定制需求表单提交
+            const customForm = document.getElementById('customForm');
+            customForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                if (!currentUser) {
+                    document.getElementById('loginRequiredAlert').classList.remove('hidden');
+                    setTimeout(() => {
+                        document.getElementById('loginRequiredAlert').classList.add('hidden');
+                    }, 3000);
+                    return;
+                }
+
+                // 获取表单数据
+                const productTypeSelect = document.getElementById('productType');
+                const productType = productTypeSelect.options[productTypeSelect.selectedIndex].text;
+                const productSize = document.getElementById('productSize').value;
+                const productColor = document.getElementById('productColor').value;
+                const quantity = document.getElementById('quantity').value;
+                const customRequirements = document.getElementById('customRequirements').value;
+                const contactInfo = document.getElementById('contactInfo').value;
+
+                // 简单验证
+                if (!productType || !productSize || !productColor || !quantity || !customRequirements || !contactInfo) {
+                    alert('请填写所有必填项');
+                    return;
+                }
+
+                // 创建新的定制需求
+                const newRequest = {
+                    id: customRequests.length + 1,
+                    user: currentUser.username,
+                    productType: productType,
+                    size: productSize,
+                    color: productColor,
+                    quantity: quantity,
+                    requirements: customRequirements,
+                    contact: contactInfo,
+                    status: '待处理',
+                    time: new Date().toLocaleString()
+                };
+
+                // 添加到列表并保存到本地存储
+                customRequests.unshift(newRequest);
+                localStorage.setItem('customRequests', JSON.stringify(customRequests));
+
+                // 重置表单
+                customForm.reset();
+                colorOptions.forEach(opt => opt.classList.remove('border-primary'));
+
+                // 显示成功提示
+                showSuccessToast('定制需求已提交，我们将尽快与您联系！');
+            });
+        });
+
+        // 更新用户界面
+        function updateUserInterface() {
+            const loginBtn = document.getElementById('loginBtn');
+            const mobileLoginBtn = document.getElementById('mobileLoginBtn');
+            const userMenu = document.getElementById('userMenu');
+            const userName = document.getElementById('userName');
+            const adminLink = document.getElementById('adminLink');
+
+            if (currentUser) {
+                // 已登录状态
+                loginBtn.classList.add('hidden');
+                mobileLoginBtn.classList.add('hidden');
+                userMenu.classList.remove('hidden');
+                userMenu.classList.add('flex');
+                userName.textContent = currentUser.username;
+
+                // 管理员权限
+                if (currentUser.role === 'admin') {
+                    adminLink.classList.remove('hidden');
+                } else {
+                    adminLink.classList.add('hidden');
+                }
+            } else {
+                // 未登录状态
+                loginBtn.classList.remove('hidden');
+                mobileLoginBtn.classList.remove('hidden');
+                userMenu.classList.add('hidden');
+                userMenu.classList.remove('flex');
+                adminLink.classList.add('hidden');
+            }
+        }
+
+        // 显示成功提示
+        function showSuccessToast(message) {
+            const toast = document.getElementById('successToast');
+            const messageElement = document.getElementById('successMessage');
+
+            messageElement.textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+                toast.classList.remove('translate-y-0', 'opacity-100');
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>

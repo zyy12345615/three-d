@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公司介绍 - 企业官网</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#64748b',
+                        accent: '#f97316',
+                        dark: '#1e293b',
+                        light: '#f8fafc'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .timeline-item::before {
+                content: '';
+                position: absolute;
+                left: -39px;
+                top: 0;
+                height: 100%;
+                width: 2px;
+                background-color: #e2e8f0;
+            }
+            .timeline-item::after {
+                content: '';
+                position: absolute;
+                left: -45px;
+                top: 5px;
+                height: 14px;
+                width: 14px;
+                border-radius: 50%;
+                background-color: #2563eb;
+                border: 4px solid #dbeafe;
+            }
+            .timeline-item:last-child::before {
+                height: 5px;
+            }
+            .hover-lift {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            .hover-lift:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+        }
+    </style>
+</head>
+
+<body class="font-inter bg-gray-50 min-h-screen">
+    <!-- 导航栏 -->
+    <header class="bg-white shadow-md fixed w-full top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-primary">企业品牌</a>
+                </div>
+
+                <!-- 桌面导航 -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-primary font-medium transition-all">首页</a>
+                    <a href="page2.html" class="text-gray-700 hover:text-primary font-medium transition-all">定制服务</a>
+                    <a href="page3.html" class="text-primary font-medium border-b-2 border-primary pb-1">关于我们</a>
+                    <a href="page4.html" class="text-gray-700 hover:text-primary font-medium transition-all">合作公司</a>
+                    <a href="page5.html" class="text-gray-700 hover:text-primary font-medium transition-all">已有产品</a>
+                </nav>
+
+                <!-- 登录/用户区域 -->
+                <div class="flex items-center">
+                    <button id="loginBtn"
+                        class="hidden md:block px-4 py-2 text-sm font-medium text-primary border border-primary rounded-md hover:bg-primary/5 transition-colors mr-2">
+                        登录
+                    </button>
+                    <div id="userMenu" class="hidden items-center space-x-2">
+                        <span id="userName" class="text-sm font-medium"></span>
+                        <div class="relative">
+                            <button id="userDropdownBtn"
+                                class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center hover:bg-gray-300 transition-colors">
+                                <i class="fa fa-user text-gray-600"></i>
+                            </button>
+                            <div id="userDropdown"
+                                class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 hidden z-50">
+                                <a href="admin.html" id="adminLink"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hidden">管理面板</a>
+                                <a href="#" id="logoutBtn"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">退出登录</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 移动端菜单按钮 -->
+                    <button id="mobileMenuBtn"
+                        class="md:hidden ml-4 w-10 h-10 rounded-md flex items-center justify-center hover:bg-gray-100">
+                        <i class="fa fa-bars text-gray-700"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="pt-16">
+        <!-- 公司介绍头部 -->
+        <section class="relative py-20 bg-gradient-to-br from-primary/5 to-primary/10">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 md:pr-12 mb-10 md:mb-0">
+                        <h1 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-6">关于我们的公司</h1>
+                        <p class="text-lg text-gray-600 mb-6">
+                            成立于2017年,我们是一家国内首批聚焦 3D 文创定制的科技型企业,八年行业经验,为客户提供高品质的定制解决方案。
+                        </p>
+
+                    </div>
+                    <div class="md:w-1/2 relative">
+                        <img src="https://picsum.photos/id/20/600/400" alt="公司办公环境"
+                            class="w-full h-auto rounded-xl shadow-xl">
+                        <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-lg hidden md:block">
+                            <p class="font-bold text-2xl text-primary">8+</p>
+                            <p class="text-sm text-gray-600">年行业经验</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 公司愿景与使命 -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">我们的愿景与使命</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">成为全球 3D 文创定制领域的标杆，用数字技术让文化遗产 “活” 起来，让品牌定制更具文化附加值。</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-gray-50 p-8 rounded-xl hover-lift">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                            <i class="fa fa-eye text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">企业愿景</h3>
+                        <p class="text-gray-600">
+                            构建定制产业可持续新范式，以数字化生态设计平台与精益智造网络为双引擎，为全球客户输出兼具碳竞争力与场景价值的精准定制方案，引领行业标准进化,打造全球知名的定制品牌。
+                        </p>
+                    </div>
+
+                    <div class="bg-gray-50 p-8 rounded-xl hover-lift">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                            <i class="fa fa-bullseye text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">企业使命</h3>
+                        <p class="text-gray-600">
+                            精准发掘客户核心需求，以生态设计驱动、可持续材料循环、零碳工艺赋能，为客户创造兼具环境价值与商业竞争力的定制化解决方案，同步实现客户成功与生态收益的双维增长。
+                        </p>
+                    </div>
+
+                    <div class="bg-gray-50 p-8 rounded-xl hover-lift">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                            <i class="fa fa-heart text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">核心价值观</h3>
+                        <p class="text-gray-600">
+                            <!-- 客户至上、品质第一、创新进取、诚信正直、团队协作。我们坚信这些价值观是企业持续发展的基石。 -->
+                            客户至上践行绿色承诺,品质第一贯穿生态周期,创新进取驱动绿色变革,诚信正直打造透明生态,团队协作共护地球家园,我们坚信这些价值观是企业持续发展的基石。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 核心功能与客户价值模块 -->
+        <section class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- 模块标题：贴合现有页面风格，突出“解决问题”的核心 -->
+                <div class="text-center mb-16">
+                    <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">创建你想要的3D模型</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">针对文化、婚庆、文博三大客户群体,提供“3D技术+文创”的定制化解决方案</p>
+                </div>
+
+                <!-- 功能卡片：分客户类型展示，每类包含“痛点-功能-案例”，响应式布局 -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- 1. 文博机构专属功能 -->
+                    <div class="bg-white p-8 rounded-xl shadow-md hover-lift border-t-4 border-primary">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 mx-auto">
+                            <i class="fa fa-university text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-center">文化传承</h3>
+                        <!-- 核心功能 -->
+                        <div class="mb-4 text-gray-600">
+                            <p class="font-medium text-dark mb-2">我们的功能：</p>
+                            <ul class="space-y-2 pl-6 list-disc">
+                                <li>文创产品开发：将当地文化元素非遗符号等转化为数字化模型</li>
+                                <li>艺术创作品创作与复:艺术家提供3D打印服务,帮助他们将创意快速转化为实体作品</li>
+                                <li>文化IP衍生产品制作:与文化id应用者合作,设计并3d打印出各种衍生产</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <!-- 2. 文旅景区专属功能 -->
+                    <div class="bg-white p-8 rounded-xl shadow-md hover-lift border-t-4 border-accent">
+                        <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mb-6 mx-auto">
+                            <i class="fa fa-map-signs text-accent text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-center">婚庆纪念</h3>
+
+                        <!-- 核心功能 -->
+                        <div class="mb-4 text-gray-600">
+                            <p class="font-medium text-dark mb-2">我们的功能：</p>
+                            <ul class="space-y-2 pl-6 list-disc">
+                                <li>个性化婚礼纪念品:根据客户的需求,3D打印出定制的婚礼人像雕塑、婚礼场景模型等</li>
+                                <li>婚礼装饰道具：打印具有创意的婚礼装饰</li>
+                                <li>婚戒定制:利用3D打印技术制作个性化婚戒,满足客户对婚戒独特性的要求</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <!-- 3. 消费品牌专属功能 -->
+                    <div class="bg-white p-8 rounded-xl shadow-md hover-lift border-t-4 border-secondary">
+                        <div
+                            class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-6 mx-auto">
+                            <i class="fa fa-shopping-bag text-secondary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4 text-center">文博机构</h3>
+
+                        <!-- 核心功能 -->
+                        <div class="mb-4 text-gray-600">
+                            <p class="font-medium text-dark mb-2">我们的功能：</p>
+                            <ul class="space-y-2 pl-6 list-disc">
+                                <li>文物复制与修复:运用3D打印技术对文物进行高精度复制,用于展览展示,减少对珍贵文物本体的伤损</li>
+                                <li>虚拟展览与体验:将文物进行三维数字化建模,结合VR、AR等技术打造虚拟展览</li>
+                                <li>文博科普教育:制作3D打印的文物模型用于科普教育活动</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 政策支撑模块（可插入main标签内，建议放在“常见定制类型”模块之后） -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- 模块标题（与现有页面标题风格一致） -->
+                <div class="text-center mb-12">
+                    <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">政策赋能 助力发展</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">依托国家及地方多重政策支持,构建3D文创领域高质量发展坚实后盾</p>
+                </div>
+
+                <!-- 图文内容区（响应式布局：移动端上下排列，大屏左右排列） -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                    <!-- 左侧政策文字内容（分层次展示，搭配卡片样式） -->
+                    <div class="space-y-6">
+                        <!-- 国家层面政策卡片 -->
+                        <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                            <div class="flex items-center mb-4">
+                                <div
+                                    class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center mr-3">
+                                    <i class="fa fa-flag"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold text-dark">国家层面政策支持</h3>
+                            </div>
+                            <ul class="text-gray-600 space-y-3 pl-13 list-disc">
+                                <li><a href="https://ailegal.baidu.com/?fr=seo_qadetail_bing&template=business&articleType=qadetail
+                                    &articleId=b94c8471fd29e6250529" target="_blank">小型微利企业:减按20%的税率征收企业所得税。</a></li>
+                                <li><a href="https://www.mof.gov.cn/gkml/caizhengwengao/wg2021/wg202005/202109/t20210917_3753617.htm"
+                                        target="_blank">文创产业扶持计划：获得研发补贴与成果转化专项基金</a></li>
+                                <li><a href="https://www.chinatax.gov.cn/chinatax/n810356/n3010387/c5185946/content.html"
+                                        target="_blank">研发费用加计扣除:符合条件的研发支出可按100%在税前扣除</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- 地方层面政策卡片 -->
+                        <div class="bg-gray-50 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                            <div class="flex items-center mb-4">
+                                <div
+                                    class="w-10 h-10 bg-accent text-white rounded-full flex items-center justify-center mr-3">
+                                    <i class="fa fa-map-marker"></i>
+                                </div>
+                                <h3 class="text-xl font-semibold text-dark">地方专项政策扶持</h3>
+                            </div>
+                            <ul class="text-gray-600 space-y-3 pl-13 list-disc">
+                                <li><a href="http://sthj.shandong.gov.cn/dtxx/hbyw/202301/t20230103_4206604.html"
+                                        target="_blank">山东省绿色低碳高质量发展先行区:推动高水平科技自立自强</a></li>
+                                <li><a href="http://innovation.jinan.gov.cn/art/2025/5/20/art_17708_4827801.html"
+                                        target="_blank">研发费用加计扣除:符合条件的研发支出可按100%在税前扣除</a></li>
+                                <li><a href="https://www.gov.cn/zhengce/zhengceku/202505/content_7024793.htm"
+                                        target="_blank">小微企业扶持政策：满足条件可申请低息贷款与社保费用减免</a></li>
+                            </ul>
+                        </div>
+
+
+                    </div>
+
+                    <!-- 右侧政策相关图片（带hover放大效果，与现有产品图交互一致） -->
+                    <div class="relative">
+                        <img src="./images/company.png" alt="政策支撑企业发展"
+                            class="w-full h-auto rounded-xl shadow-xl object-cover scale-hover">
+                        <!-- 图片标注（增强信息传达） -->
+                        <div class="absolute top-6 left-6 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full text-primary 
+                            font-medium text-sm">
+                            政策覆盖领域:新一代信息技术，绿色环保
+                        </div>
+                        <div
+                            class="absolute bottom-6 right-6 bg-accent/90 backdrop-blur-sm px-4 py-2 rounded-full text-white font-medium text-sm">
+                            2025年“两新”政策加力扩围,资金规模大幅增加
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- 团队介绍 -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">核心团队</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">我们拥有一支经验丰富、充满激情的专业团队</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md hover-lift">
+                        <img src="https://picsum.photos/id/1012/400/500" alt="张总经理"
+                            class="w-full h-64 object-cover object-center">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-1">张明</h3>
+                            <p class="text-primary mb-3">创始人 & 总经理</p>
+                            <p class="text-gray-600 text-sm mb-4">
+                                8 年 3D 文创定制行业经验，曾主导故宫文创数字展厅、华侨城文旅 3D 导览项目，带领团队获得 “2023 年度数字文创创新企业” 称号，擅长整合 “技术 + 文化 +
+                                商业” 资源，为客户定制高落地性方案。
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md hover-lift">
+                        <img src="https://picsum.photos/id/1027/400/500" alt="李总监"
+                            class="w-full h-64 object-cover object-center">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-1">李婷</h3>
+                            <p class="text-primary mb-3">设计总监</p>
+                            <p class="text-gray-600 text-sm mb-4">
+                                中央美术学院数字媒体设计专业背景，15 年产品设计经验，主导 “国潮机甲”“非遗新说” 两大 IP 的 3D 设计，带领团队完成 1000 + 定制项目（含华为 3D
+                                品牌衍生品、李宁国潮手办），设计作品曾获 “中国数字艺术大赛银奖”。
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md hover-lift">
+                        <img src="https://picsum.photos/id/1025/400/500" alt="王经理"
+                            class="w-full h-64 object-cover object-center">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-1">王伟</h3>
+                            <p class="text-primary mb-3">生产总监</p>
+                            <p class="text-gray-600 text-sm mb-4">
+                                精益生产专家，专注 3D 打印与数字制造领域，优化 3D 衍生品生产流程，将手办定制交付周期从 15 天缩短至 7 天，合格率提升至
+                                99.2%，同时推动环保材料应用，实现生产环节绿色低碳（符合山东地方绿色政策）。
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md hover-lift">
+                        <img src="https://picsum.photos/id/1062/400/500" alt="赵经理"
+                            class="w-full h-64 object-cover object-center">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-1">赵琳</h3>
+                            <p class="text-primary mb-3">市场总监</p>
+                            <p class="text-gray-600 text-sm mb-4">
+                                深耕文创营销领域，曾为敦煌莫高窟虚拟漫游项目策划线上推广，实现曝光量超 5000 万，助力项目成为文旅数字化标杆案例；擅长挖掘客户品牌文化内核，将其转化为 3D
+                                定制产品的核心卖点。
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 企业荣誉 -->
+        <section class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">企业荣誉</h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">多年来获得的行业认可与荣誉资质</p>
+                </div>
+
+                <!-- 关键修改：添加 justify-items-center 实现子元素水平居中，调整列数适配4个元素 -->
+                <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center">
+                    <div
+                        class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center hover-lift w-full max-w-[180px]">
+                        <img src="./images/2017.jpg" alt="荣誉证书1" class="max-h-20 max-w-full object-contain">
+                    </div>
+                    <div
+                        class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center hover-lift w-full max-w-[180px]">
+                        <img src="./images/2018.jpg" alt="荣誉证书2"
+                            class="max-h-20 max-w-full object-contain transform -rotate-90">
+                    </div>
+                    <div
+                        class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center hover-lift w-full max-w-[180px]">
+                        <img src="./images/2020-1.jpg" alt="荣誉证书3" class="max-h-20 max-w-full object-contain">
+                    </div>
+                    <div
+                        class="bg-white p-6 rounded-lg shadow-md flex items-center justify-center hover-lift w-full max-w-[180px]">
+                        <img src="./images/2020-2.jpg" alt="荣誉证书4" class="max-h-20 max-w-full object-contain">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12 relative z-10">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">企业品牌</h3>
+                    <p class="text-gray-400 mb-4">专注于提供高质量产品和定制服务，满足客户多样化需求。</p>
+
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">快速链接</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-all">首页</a></li>
+                        <li><a href="page2.html" class="text-gray-400 hover:text-white transition-all">定制服务</a></li>
+                        <li><a href="page3.html" class="text-gray-400 hover:text-white transition-all">关于我们</a></li>
+                        <li><a href="page4.html" class="text-gray-400 hover:text-white transition-all">合作公司</a></li>
+                        <li><a href="page5.html" class="text-gray-400 hover:text-white transition-all">已有产品</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">联系我们</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fa fa-map-marker mt-1 mr-3 text-gray-400"></i>
+                            <span class="text-gray-400">山东省济南市长清区大学科技园大学路1号</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-phone mr-3 text-gray-400"></i>
+                            <span class="text-gray-400">98+ 190 0000 0000</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-envelope mr-3 text-gray-400"></i>
+                            <span class="text-gray-400">contact@example.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">订阅通讯</h4>
+                    <p class="text-gray-400 mb-4">订阅我们的通讯，获取最新产品和活动信息。</p>
+                    <form class="flex">
+                        <input type="email" placeholder="您的邮箱地址"
+                            class="px-4 py-2 rounded-l-lg w-full focus:outline-none text-dark">
+                        <button type="submit"
+                            class="bg-primary hover:bg-primary/90 px-4 py-2 rounded-r-lg transition-all">
+                            <i class="fa fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500">
+                <p>&copy;3D环梦工坊文创工作室保留所有权利</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 登录模态框 -->
+    <div id="loginModal"
+        class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-md p-8 transform transition-all">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold">用户登录</h3>
+                <button id="closeLoginModal" class="text-gray-500 hover:text-gray-700 transition-colors">
+                    <i class="fa fa-times text-xl"></i>
+                </button>
+            </div>
+
+            <form id="loginForm" class="space-y-6">
+                <div>
+                    <label for="username" class="block text-sm font-medium text-gray-700 mb-1">用户名</label>
+                    <input type="text" id="username" name="username" placeholder="请输入用户名"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-colors">
+                </div>
+
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-1">密码</label>
+                    <input type="password" id="password" name="password" placeholder="请输入密码"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-colors">
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="rememberMe" name="rememberMe"
+                            class="w-4 h-4 text-primary focus:ring-primary border-gray-300 rounded">
+                        <label for="rememberMe" class="ml-2 block text-sm text-gray-700">记住我</label>
+                    </div>
+                    <a href="#" class="text-sm text-primary hover:underline">忘记密码?</a>
+                </div>
+
+                <div id="loginError" class="hidden p-3 bg-red-50 border border-red-200 rounded-md text-red-700 text-sm">
+                    <i class="fa fa-exclamation-circle mr-2"></i> 用户名或密码错误
+                </div>
+
+                <button type="submit"
+                    class="w-full px-6 py-3 bg-primary text-white font-medium rounded-md hover:bg-primary/90 transition-colors">
+                    登录
+                </button>
+            </form>
+
+            <div class="mt-6 text-center">
+                <p class="text-sm text-gray-600">
+                    管理员账号: admin / 密码: admin123<br>
+                    普通用户: user / 密码: user123
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 成功提示 -->
+    <div id="successToast"
+        class="fixed bottom-6 right-6 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 flex items-center">
+        <i class="fa fa-check-circle mr-2"></i>
+        <span id="successMessage"></span>
+    </div>
+
+    <script>
+        // 全局变量
+        let currentUser = null;
+
+        // 初始化页面
+        document.addEventListener('DOMContentLoaded', function () {
+            // 检查本地存储中的用户信息
+            const savedUser = localStorage.getItem('currentUser');
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+                updateUserInterface();
+            }
+
+            // 移动端菜单切换
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            mobileMenuBtn.addEventListener('click', function () {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // 登录模态框
+            const loginBtn = document.getElementById('loginBtn');
+            const mobileLoginBtn = document.getElementById('mobileLoginBtn');
+            const loginModal = document.getElementById('loginModal');
+            const closeLoginModal = document.getElementById('closeLoginModal');
+
+            loginBtn.addEventListener('click', function () {
+                loginModal.classList.remove('hidden');
+            });
+
+            mobileLoginBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                loginModal.classList.remove('hidden');
+                mobileMenu.classList.add('hidden');
+            });
+
+            closeLoginModal.addEventListener('click', function () {
+                loginModal.classList.add('hidden');
+                document.getElementById('loginError').classList.add('hidden');
+                document.getElementById('loginForm').reset();
+            });
+
+            // 点击模态框外部关闭
+            loginModal.addEventListener('click', function (e) {
+                if (e.target === loginModal) {
+                    loginModal.classList.add('hidden');
+                    document.getElementById('loginError').classList.add('hidden');
+                    document.getElementById('loginForm').reset();
+                }
+            });
+
+            // 登录表单提交
+            const loginForm = document.getElementById('loginForm');
+            loginForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                const rememberMe = document.getElementById('rememberMe').checked;
+
+                // 简单的登录验证
+                if ((username === 'admin' && password === 'admin123') ||
+                    (username === 'user' && password === 'user123')) {
+
+                    // 保存用户信息
+                    currentUser = {
+                        username: username,
+                        role: username === 'admin' ? 'admin' : 'user'
+                    };
+
+                    if (rememberMe) {
+                        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                    } else {
+                        sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
+                    }
+
+                    // 更新界面
+                    updateUserInterface();
+
+                    // 关闭模态框
+                    loginModal.classList.add('hidden');
+                    document.getElementById('loginForm').reset();
+
+                    // 显示成功提示
+                    showSuccessToast('登录成功！');
+                } else {
+                    document.getElementById('loginError').classList.remove('hidden');
+                }
+            });
+
+            // 用户下拉菜单
+            const userDropdownBtn = document.getElementById('userDropdownBtn');
+            const userDropdown = document.getElementById('userDropdown');
+
+            userDropdownBtn.addEventListener('click', function () {
+                userDropdown.classList.toggle('hidden');
+            });
+
+            // 点击外部关闭下拉菜单
+            document.addEventListener('click', function (e) {
+                if (!userDropdownBtn.contains(e.target) && !userDropdown.contains(e.target)) {
+                    userDropdown.classList.add('hidden');
+                }
+            });
+
+            // 退出登录
+            const logoutBtn = document.getElementById('logoutBtn');
+            logoutBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                currentUser = null;
+                localStorage.removeItem('currentUser');
+                sessionStorage.removeItem('currentUser');
+
+                updateUserInterface();
+                userDropdown.classList.add('hidden');
+
+                showSuccessToast('已成功退出登录！');
+            });
+        });
+
+        // 更新用户界面
+        function updateUserInterface() {
+            const loginBtn = document.getElementById('loginBtn');
+            const mobileLoginBtn = document.getElementById('mobileLoginBtn');
+            const userMenu = document.getElementById('userMenu');
+            const userName = document.getElementById('userName');
+            const adminLink = document.getElementById('adminLink');
+
+            if (currentUser) {
+                // 已登录状态
+                loginBtn.classList.add('hidden');
+                mobileLoginBtn.classList.add('hidden');
+                userMenu.classList.remove('hidden');
+                userMenu.classList.add('flex');
+                userName.textContent = currentUser.username;
+
+                // 管理员权限
+                if (currentUser.role === 'admin') {
+                    adminLink.classList.remove('hidden');
+                } else {
+                    adminLink.classList.add('hidden');
+                }
+            } else {
+                // 未登录状态
+                loginBtn.classList.remove('hidden');
+                mobileLoginBtn.classList.remove('hidden');
+                userMenu.classList.add('hidden');
+                userMenu.classList.remove('flex');
+                adminLink.classList.add('hidden');
+            }
+        }
+
+        // 显示成功提示
+        function showSuccessToast(message) {
+            const toast = document.getElementById('successToast');
+            const messageElement = document.getElementById('successMessage');
+
+            messageElement.textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+                toast.classList.remove('translate-y-0', 'opacity-100');
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>

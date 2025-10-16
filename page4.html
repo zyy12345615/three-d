@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>合作公司 - 企业官网</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#64748b',
+                        accent: '#f97316',
+                        dark: '#1e293b',
+                        light: '#f8fafc'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+            }
+            .bg-gradient-overlay {
+                background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
+            }
+        }
+    </style>
+</head>
+
+<body class="font-inter bg-gray-50 text-dark antialiased">
+    <!-- 导航栏 -->
+    <header class="bg-white shadow-md fixed w-full top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-primary">企业品牌</a>
+                </div>
+
+                <!-- 桌面导航 -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-primary font-medium transition-all">首页</a>
+                    <a href="page2.html" class="text-gray-700 hover:text-primary font-medium transition-all">定制服务</a>
+                    <a href="page3.html" class="text-primary font-medium border-b-2 border-primary pb-1">关于我们</a>
+                    <a href="page4.html" class="text-gray-700 hover:text-primary font-medium transition-all">合作公司</a>
+                    <a href="page5.html" class="text-gray-700 hover:text-primary font-medium transition-all">已有产品</a>
+                </nav>
+
+                <!-- 登录/用户区域 -->
+                <div class="flex items-center">
+                    <button id="loginBtn"
+                        class="hidden md:block px-4 py-2 text-sm font-medium text-primary border border-primary rounded-md hover:bg-primary/5 transition-colors mr-2">
+                        登录
+                    </button>
+                    <div id="userMenu" class="hidden items-center space-x-2">
+                        <span id="userName" class="text-sm font-medium"></span>
+                        <div class="relative">
+                            <button id="userDropdownBtn"
+                                class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center hover:bg-gray-300 transition-colors">
+                                <i class="fa fa-user text-gray-600"></i>
+                            </button>
+                            <div id="userDropdown"
+                                class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 hidden z-50">
+                                <a href="admin.html" id="adminLink"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hidden">管理面板</a>
+                                <a href="#" id="logoutBtn"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">退出登录</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 移动端菜单按钮 -->
+                    <button id="mobileMenuBtn"
+                        class="md:hidden ml-4 w-10 h-10 rounded-md flex items-center justify-center hover:bg-gray-100">
+                        <i class="fa fa-bars text-gray-700"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <header class="bg-white shadow-md fixed w-full top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-primary">企业品牌</a>
+                </div>
+
+                <!-- 桌面导航 -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-primary font-medium transition-all">首页</a>
+                    <a href="page2.html" class="text-gray-700 hover:text-primary font-medium transition-all">定制服务</a>
+                    <a href="page3.html" class="text-gray-700 hover:text-primary font-medium transition-all">关于我们</a>
+                    <a href="page4.html" class="text-primary font-medium border-b-2 border-primary pb-1">合作公司</a>
+                    <a href="page5.html" class="text-gray-700 hover:text-primary font-medium transition-all">已有产品</a>
+                </nav>
+
+                <!-- 登录/用户区域 -->
+                <div class="flex items-center">
+                    <button id="loginBtn"
+                        class="hidden md:block px-4 py-2 text-sm font-medium text-primary border border-primary rounded-md hover:bg-primary/5 transition-colors mr-2">
+                        登录
+                    </button>
+                    <div id="userMenu" class="hidden items-center space-x-2">
+                        <span id="userName" class="text-sm font-medium"></span>
+                        <div class="relative">
+                            <button id="userDropdownBtn"
+                                class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center hover:bg-gray-300 transition-colors">
+                                <i class="fa fa-user text-gray-600"></i>
+                            </button>
+                            <div id="userDropdown"
+                                class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 hidden z-50">
+                                <a href="admin.html" id="adminLink"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hidden">管理面板</a>
+                                <a href="#" id="logoutBtn"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">退出登录</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 移动端菜单按钮 -->
+                    <button id="mobileMenuBtn"
+                        class="md:hidden ml-4 w-10 h-10 rounded-md flex items-center justify-center hover:bg-gray-100">
+                        <i class="fa fa-bars text-gray-700"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 页面标题区域 -->
+    <section class="pt-24 pb-12 bg-gradient-to-r from-primary/90 to-primary">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-[clamp(1.8rem,4vw,3rem)] font-bold text-white mb-4">合作公司</h1>
+                <p class="text-white/80 max-w-2xl mx-auto text-lg">与行业领先企业建立长期稳定的合作关系，共创商业价值</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 合作优势 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4">山东艺之匠三维打印有限公司</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">我们与合作伙伴共同成长，凭借专业能力和资源整合优势，实现互利共赢</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-8 rounded-xl card-hover">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-handshake-o text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">战略合作伙伴关系</h3>
+                    <p class="text-gray-600">
+                        与企业建立长期战略合作伙伴关系，共享资源，共同发展，实现互利共赢的商业生态。
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 p-8 rounded-xl card-hover">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-line-chart text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">强劲的增长动力</h3>
+                    <p class="text-gray-600">
+                        依托优质合作伙伴资源，结合自身技术优势和市场洞察力，保持持续稳定的业务增长和市场拓展。
+                    </p>
+                </div>
+
+                <div class="bg-gray-50 p-8 rounded-xl card-hover">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-shield text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">稳健的运营体系</h3>
+                    <p class="text-gray-600">
+                        建立了完善的运营管理体系和风险控制机制，确保在与合作伙伴的业务往来中实现可持续发展。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 业务领域 -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-4">业务领域介绍</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">我们的合作覆盖多个行业领域，提供专业的产品与服务解决方案</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
+                <div>
+                    <span class="text-primary font-semibold">核心业务领域</span>
+                    <h3 class="text-2xl font-bold mt-2 mb-6">人才培养与交流</h3>
+                    <p class="text-gray-600 mb-6">
+                        与领先科技企业合作，企业为工作室师生提供就业实习机会，搭建产学研实践平台，工作室则为公司输送具备创新思维与专业基础的人才储备。
+                    </p>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-start">
+                            <i class="fa fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>企业定制化课程体系</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>共建实训基地</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>校企联合项目攻关</span>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="rounded-xl overflow-hidden shadow-lg">
+                    <img src="https://picsum.photos/id/180/800/500" alt="人才培养与交流" class="w-full h-auto">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
+                <div>
+                    <span class="text-primary font-semibold">核心业务领域</span>
+                    <h3 class="text-2xl font-bold mt-2 mb-6">智能制造与供应链管理</h3>
+                    <p class="text-gray-600 mb-6">
+                        与制造业领军企业合作，打造智能化生产体系和高效供应链管理模式，实现生产流程优化和供应链协同。
+                    </p>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-start">
+                            <i class="fa fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>智能工厂整体解决方案</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>供应链可视化与协同平台</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>精益生产与智能制造咨询</span>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="rounded-xl overflow-hidden shadow-lg">
+                    <img src="./images/engine.png" alt="智能制造与供应链管理" class="w-full h-auto">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="rounded-xl overflow-hidden shadow-lg md:order-2">
+                    <img src="https://picsum.photos/id/20/800/500" alt="项目协同研发" class="w-full h-auto">
+                </div>
+                <div class="md:order-1">
+                    <span class="text-primary font-semibold">核心业务领域</span>
+                    <h3 class="text-2xl font-bold mt-2 mb-6">项目协同研发</h3>
+                    <p class="text-gray-600 mb-6">
+                        结合双方技术与资源优势,共同开展3D打印领域的创新项目研发,推动技术成果转化与行业应用拓展。
+                    </p>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-start">
+                            <i class="fa fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>目标与需求协同</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>流程与资源协同</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>团队与知识协同</span>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 合作公司展示 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+
+
+            <!-- 管理员添加合作公司按钮 -->
+            <div class="mt-12 text-center">
+                <button id="addPartnerBtn"
+                    class="px-6 py-3 bg-primary text-white font-medium rounded-md hover:bg-primary/90 transition-all hidden">
+                    <i class="fa fa-plus mr-2"></i> 添加合作公司
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 合作咨询 -->
+    <section class="py-16 bg-primary/5">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2">
+                    <div class="p-8 md:p-10">
+                        <h2 class="text-2xl font-bold mb-4">寻求合作？</h2>
+                        <p class="text-gray-600 mb-6">
+                            如果您的企业有合作意向，欢迎填写以下信息，我们的商务团队将尽快与您联系。
+                        </p>
+                        <form id="cooperationForm" class="space-y-4">
+                            <div>
+                                <label for="companyName"
+                                    class="block text-sm font-medium text-gray-700 mb-1">公司名称</label>
+                                <input type="text" id="companyName" name="companyName" placeholder="请输入公司名称"
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-all">
+                            </div>
+
+                            <div>
+                                <label for="contactPerson"
+                                    class="block text-sm font-medium text-gray-700 mb-1">联系人</label>
+                                <input type="text" id="contactPerson" name="contactPerson" placeholder="请输入联系人姓名"
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-all">
+                            </div>
+
+                            <div>
+                                <label for="contactPhone"
+                                    class="block text-sm font-medium text-gray-700 mb-1">联系电话</label>
+                                <input type="tel" id="contactPhone" name="contactPhone" placeholder="请输入联系电话"
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-all">
+                            </div>
+
+                            <div>
+                                <label for="cooperationType"
+                                    class="block text-sm font-medium text-gray-700 mb-1">合作类型</label>
+                                <select id="cooperationType" name="cooperationType"
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-all">
+                                    <option value="">请选择合作类型</option>
+                                    <option value="technology">技术合作</option>
+                                    <option value="market">市场合作</option>
+                                    <option value="product">产品合作</option>
+                                    <option value="project">项目合作</option>
+                                    <option value="other">其他合作</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="cooperationDesc"
+                                    class="block text-sm font-medium text-gray-700 mb-1">合作描述</label>
+                                <textarea id="cooperationDesc" name="cooperationDesc" rows="3"
+                                    placeholder="请简要描述合作意向..."
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-all"></textarea>
+                            </div>
+
+                            <div id="coopLoginAlert"
+                                class="hidden p-3 bg-amber-50 border border-amber-200 rounded-md text-amber-800 text-sm">
+                                <i class="fa fa-info-circle mr-2"></i> 请先登录以提交合作意向
+                            </div>
+
+                            <button type="submit"
+                                class="w-full px-6 py-3 bg-primary text-white font-medium rounded-md hover:bg-primary/90 transition-all">
+                                提交合作意向
+                            </button>
+                        </form>
+                    </div>
+                    <div class="bg-primary p-8 md:p-10 text-white flex flex-col justify-center">
+                        <h3 class="text-xl font-bold mb-6">合作咨询热线</h3>
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                <i class="fa fa-phone text-2xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-white/80 text-sm">商务合作热线</p>
+                                <p class="text-xl font-bold">98+ 190 0000 0000</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                <i class="fa fa-envelope text-2xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-white/80 text-sm">商务合作邮箱</p>
+                                <p class="font-medium">contact@example.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mr-4">
+                                <i class="fa fa-clock-o text-2xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-white/80 text-sm">工作时间</p>
+                                <p class="font-medium">周一至周五 9:00-18:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12 relative z-10">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">企业品牌</h3>
+                    <p class="text-gray-400 mb-4">专注于提供高质量产品和定制服务，满足客户多样化需求。</p>
+
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">快速链接</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-all">首页</a></li>
+                        <li><a href="page2.html" class="text-gray-400 hover:text-white transition-all">定制服务</a></li>
+                        <li><a href="page3.html" class="text-gray-400 hover:text-white transition-all">关于我们</a></li>
+                        <li><a href="page4.html" class="text-gray-400 hover:text-white transition-all">合作公司</a></li>
+                        <li><a href="page5.html" class="text-gray-400 hover:text-white transition-all">已有产品</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">联系我们</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fa fa-map-marker mt-1 mr-3 text-gray-400"></i>
+                            <span class="text-gray-400">山东省济南市长清区大学科技园大学路1号</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-phone mr-3 text-gray-400"></i>
+                            <span class="text-gray-400">98+ 190 0000 0000</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-envelope mr-3 text-gray-400"></i>
+                            <span class="text-gray-400">contact@example.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">订阅通讯</h4>
+                    <p class="text-gray-400 mb-4">订阅我们的通讯，获取最新产品和活动信息。</p>
+                    <form class="flex">
+                        <input type="email" placeholder="您的邮箱地址"
+                            class="px-4 py-2 rounded-l-lg w-full focus:outline-none text-dark">
+                        <button type="submit"
+                            class="bg-primary hover:bg-primary/90 px-4 py-2 rounded-r-lg transition-all">
+                            <i class="fa fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500">
+                <p>&copy;3D环梦工坊文创工作室保留所有权利</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 登录模态框 -->
+    <div id="loginModal"
+        class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-md p-8 transform transition-all">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold">用户登录</h3>
+                <button id="closeLoginModal" class="text-gray-500 hover:text-gray-700 transition-all">
+                    <i class="fa fa-times text-xl"></i>
+                </button>
+            </div>
+
+            <form id="loginForm" class="space-y-6">
+                <div>
+                    <label for="username" class="block text-sm font-medium text-gray-700 mb-1">用户名</label>
+                    <input type="text" id="username" name="username" placeholder="请输入用户名"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-all">
+                </div>
+
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-1">密码</label>
+                    <input type="password" id="password" name="password" placeholder="请输入密码"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary focus:border-primary transition-all">
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="rememberMe" name="rememberMe"
+                            class="w-4 h-4 text-primary focus:ring-primary border-gray-300 rounded">
+                        <label for="rememberMe" class="ml-2 block text-sm text-gray-700">记住我</label>
+                    </div>
+                    <a href="#" class="text-sm text-primary hover:underline">忘记密码?</a>
+                </div>
+
+                <div id="loginError" class="hidden p-3 bg-red-50 border border-red-200 rounded-md text-red-700 text-sm">
+                    <i class="fa fa-exclamation-circle mr-2"></i> 用户名或密码错误
+                </div>
+
+                <button type="submit"
+                    class="w-full px-6 py-3 bg-primary text-white font-medium rounded-md hover:bg-primary/90 transition-all">
+                    登录
+                </button>
+            </form>
+
+            <div class="mt-6 text-center">
+                <p class="text-sm text-gray-600">
+                    管理员账号: admin / 密码: admin123<br>
+                    普通用户: user / 密码: user123
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 成功提示 -->
+    <div id="successToast"
+        class="fixed bottom-6 right-6 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 flex items-center">
+        <i class="fa fa-check-circle mr-2"></i>
+        <span id="successMessage"></span>
+    </div>
+
+    <script>
+        // 全局变量
+        let currentUser = null;
+
+        // 初始化页面
+        document.addEventListener('DOMContentLoaded', function () {
+            // 检查本地存储中的用户信息
+            const savedUser = localStorage.getItem('currentUser');
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+                updateUserInterface();
+            }
+
+            // 导航栏滚动效果
+            window.addEventListener('scroll', function () {
+                const navbar = document.getElementById('navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('shadow-md');
+                    navbar.classList.remove('shadow-sm');
+                } else {
+                    navbar.classList.remove('shadow-md');
+                    navbar.classList.add('shadow-sm');
+                }
+            });
+
+            // 移动端菜单切换
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            mobileMenuBtn.addEventListener('click', function () {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // 登录模态框
+            const loginBtn = document.getElementById('loginBtn');
+            const mobileLoginBtn = document.getElementById('mobileLoginBtn');
+            const loginModal = document.getElementById('loginModal');
+            const closeLoginModal = document.getElementById('closeLoginModal');
+
+            loginBtn.addEventListener('click', function () {
+                loginModal.classList.remove('hidden');
+            });
+
+            mobileLoginBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                loginModal.classList.remove('hidden');
+                mobileMenu.classList.add('hidden');
+            });
+
+            closeLoginModal.addEventListener('click', function () {
+                loginModal.classList.add('hidden');
+                document.getElementById('loginError').classList.add('hidden');
+                document.getElementById('loginForm').reset();
+            });
+
+            // 点击模态框外部关闭
+            loginModal.addEventListener('click', function (e) {
+                if (e.target === loginModal) {
+                    loginModal.classList.add('hidden');
+                    document.getElementById('loginError').classList.add('hidden');
+                    document.getElementById('loginForm').reset();
+                }
+            });
+
+            // 登录表单提交
+            const loginForm = document.getElementById('loginForm');
+            loginForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                const rememberMe = document.getElementById('rememberMe').checked;
+
+                // 简单的登录验证
+                if ((username === 'admin' && password === 'admin123') ||
+                    (username === 'user' && password === 'user123')) {
+
+                    // 保存用户信息
+                    currentUser = {
+                        username: username,
+                        role: username === 'admin' ? 'admin' : 'user'
+                    };
+
+                    if (rememberMe) {
+                        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                    } else {
+                        sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
+                    }
+
+                    // 更新界面
+                    updateUserInterface();
+
+                    // 关闭模态框
+                    loginModal.classList.add('hidden');
+                    document.getElementById('loginForm').reset();
+
+                    // 显示成功提示
+                    showSuccessToast('登录成功！');
+                } else {
+                    document.getElementById('loginError').classList.remove('hidden');
+                }
+            });
+
+            // 用户下拉菜单
+            const userDropdownBtn = document.getElementById('userDropdownBtn');
+            const userDropdown = document.getElementById('userDropdown');
+
+            userDropdownBtn.addEventListener('click', function () {
+                userDropdown.classList.toggle('hidden');
+            });
+
+            // 点击外部关闭下拉菜单
+            document.addEventListener('click', function (e) {
+                if (!userDropdownBtn.contains(e.target) && !userDropdown.contains(e.target)) {
+                    userDropdown.classList.add('hidden');
+                }
+            });
+
+            // 退出登录
+            const logoutBtn = document.getElementById('logoutBtn');
+            logoutBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                currentUser = null;
+                localStorage.removeItem('currentUser');
+                sessionStorage.removeItem('currentUser');
+
+                updateUserInterface();
+                userDropdown.classList.add('hidden');
+
+                showSuccessToast('已成功退出登录！');
+            });
+
+            // 合作意向表单提交
+            const cooperationForm = document.getElementById('cooperationForm');
+            cooperationForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                if (!currentUser) {
+                    document.getElementById('coopLoginAlert').classList.remove('hidden');
+                    setTimeout(() => {
+                        document.getElementById('coopLoginAlert').classList.add('hidden');
+                    }, 3000);
+                    return;
+                }
+
+                // 获取表单数据
+                const companyName = document.getElementById('companyName').value;
+                const contactPerson = document.getElementById('contactPerson').value;
+                const contactPhone = document.getElementById('contactPhone').value;
+                const cooperationType = document.getElementById('cooperationType').value;
+                const cooperationDesc = document.getElementById('cooperationDesc').value;
+
+                // 简单验证
+                if (!companyName || !contactPerson || !contactPhone || !cooperationType) {
+                    alert('请填写完整的合作信息');
+                    return;
+                }
+
+                // 重置表单
+                cooperationForm.reset();
+
+                // 显示成功提示
+                showSuccessToast('合作意向已提交，我们将尽快与您联系！');
+            });
+        });
+
+        // 更新用户界面
+        function updateUserInterface() {
+            const loginBtn = document.getElementById('loginBtn');
+            const userMenu = document.getElementById('userMenu');
+            const userName = document.getElementById('userName');
+            const adminLink = document.getElementById('adminLink');
+            const addPartnerBtn = document.getElementById('addPartnerBtn');
+
+            if (currentUser) {
+                // 已登录状态
+                loginBtn.classList.add('hidden');
+                userMenu.classList.remove('hidden');
+                userMenu.classList.add('flex');
+                userName.textContent = currentUser.username;
+
+                // 管理员权限
+                if (currentUser.role === 'admin') {
+                    adminLink.classList.remove('hidden');
+                    addPartnerBtn.classList.remove('hidden');
+                } else {
+                    adminLink.classList.add('hidden');
+                    addPartnerBtn.classList.add('hidden');
+                }
+            } else {
+                // 未登录状态
+                loginBtn.classList.remove('hidden');
+                userMenu.classList.add('hidden');
+                userMenu.classList.remove('flex');
+                adminLink.classList.add('hidden');
+                addPartnerBtn.classList.add('hidden');
+            }
+        }
+
+        // 显示成功提示
+        function showSuccessToast(message) {
+            const toast = document.getElementById('successToast');
+            const messageElement = document.getElementById('successMessage');
+
+            messageElement.textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+                toast.classList.remove('translate-y-0', 'opacity-100');
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>
