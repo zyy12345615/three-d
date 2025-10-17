@@ -187,72 +187,61 @@
             </div>
         </section>
 
-        <!-- 核心功能与客户价值模块 -->
+        <!-- 核心功能与客户价值模块（图标修复版） -->
         <section class="py-16 bg-gray-50">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <!-- 模块标题：贴合现有页面风格，突出“解决问题”的核心 -->
                 <div class="text-center mb-16">
                     <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">创建你想要的3D模型</h2>
                     <p class="text-gray-600 max-w-2xl mx-auto">针对文化、婚庆、文博三大客户群体,提供“3D技术+文创”的定制化解决方案</p>
                 </div>
-
-                <!-- 功能卡片：分客户类型展示，每类包含“痛点-功能-案例”，响应式布局 -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- 1. 文博机构专属功能 -->
+                    <!-- 1. 文化传承（用 fa-university 替换，4.7.0 原生支持，贴合文化属性） -->
                     <div class="bg-white p-8 rounded-xl shadow-md hover-lift border-t-4 border-primary">
                         <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 mx-auto">
-                            <i class="fa fa-university text-primary text-2xl"></i>
+                            <i class="fa fa-book text-primary text-2xl"></i> <!-- 4.7.0 支持 -->
                         </div>
                         <h3 class="text-xl font-bold mb-4 text-center">文化传承</h3>
-                        <!-- 核心功能 -->
                         <div class="mb-4 text-gray-600">
                             <p class="font-medium text-dark mb-2">我们的功能：</p>
                             <ul class="space-y-2 pl-6 list-disc">
                                 <li>文创产品开发：将当地文化元素非遗符号等转化为数字化模型</li>
-                                <li>艺术创作品创作与复:艺术家提供3D打印服务,帮助他们将创意快速转化为实体作品</li>
-                                <li>文化IP衍生产品制作:与文化id应用者合作,设计并3d打印出各种衍生产</li>
+                                <li>艺术创作品创作与复制：为艺术家提供3D打印服务，帮助他们将创意快速转化为实体作品</li>
+                                <li>文化IP衍生产品制作：与文化IP应用者合作，设计并3D打印出各种衍生产品</li>
                             </ul>
                         </div>
-
                     </div>
 
-                    <!-- 2. 文旅景区专属功能 -->
+                    <!-- 2. 婚庆纪念（用 fa-heart 替换，4.7.0 原生支持，直观传递浪漫属性） -->
                     <div class="bg-white p-8 rounded-xl shadow-md hover-lift border-t-4 border-accent">
                         <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mb-6 mx-auto">
-                            <i class="fa fa-map-signs text-accent text-2xl"></i>
+                            <i class="fa fa-heart text-accent text-2xl"></i> <!-- 4.7.0 支持 -->
                         </div>
                         <h3 class="text-xl font-bold mb-4 text-center">婚庆纪念</h3>
-
-                        <!-- 核心功能 -->
                         <div class="mb-4 text-gray-600">
                             <p class="font-medium text-dark mb-2">我们的功能：</p>
                             <ul class="space-y-2 pl-6 list-disc">
-                                <li>个性化婚礼纪念品:根据客户的需求,3D打印出定制的婚礼人像雕塑、婚礼场景模型等</li>
+                                <li>个性化婚礼纪念品：根据客户需求，3D打印定制婚礼人像雕塑、婚礼场景模型等</li>
                                 <li>婚礼装饰道具：打印具有创意的婚礼装饰</li>
-                                <li>婚戒定制:利用3D打印技术制作个性化婚戒,满足客户对婚戒独特性的要求</li>
+                                <li>婚戒定制：利用3D打印技术制作个性化婚戒，满足客户对婚戒独特性的要求</li>
                             </ul>
                         </div>
-
                     </div>
 
-                    <!-- 3. 消费品牌专属功能 -->
+                    <!-- 3. 文博机构（用 fa-university 替换，4.7.0 原生支持，贴合机构属性） -->
                     <div class="bg-white p-8 rounded-xl shadow-md hover-lift border-t-4 border-secondary">
                         <div
                             class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-6 mx-auto">
-                            <i class="fa fa-shopping-bag text-secondary text-2xl"></i>
+                            <i class="fa fa-university text-secondary text-2xl"></i> <!-- 4.7.0 支持 -->
                         </div>
                         <h3 class="text-xl font-bold mb-4 text-center">文博机构</h3>
-
-                        <!-- 核心功能 -->
                         <div class="mb-4 text-gray-600">
                             <p class="font-medium text-dark mb-2">我们的功能：</p>
                             <ul class="space-y-2 pl-6 list-disc">
-                                <li>文物复制与修复:运用3D打印技术对文物进行高精度复制,用于展览展示,减少对珍贵文物本体的伤损</li>
-                                <li>虚拟展览与体验:将文物进行三维数字化建模,结合VR、AR等技术打造虚拟展览</li>
-                                <li>文博科普教育:制作3D打印的文物模型用于科普教育活动</li>
+                                <li>文物复制与修复：运用3D打印技术对文物进行高精度复制，用于展览展示，减少对珍贵文物本体的损伤</li>
+                                <li>虚拟展览与体验：将文物进行三维数字化建模，结合VR、AR等技术打造虚拟展览</li>
+                                <li>文博科普教育：制作3D打印的文物模型用于科普教育活动</li>
                             </ul>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -342,7 +331,7 @@
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md hover-lift">
-                        <img src="https://picsum.photos/id/1012/400/500" alt="张总经理"
+                        <img src="https://picsum.photos/id/1036/400/500" alt="张总经理"
                             class="w-full h-64 object-cover object-center">
                         <div class="p-6">
                             <h3 class="text-xl font-bold mb-1">张明</h3>
@@ -356,7 +345,7 @@
                     </div>
 
                     <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md hover-lift">
-                        <img src="https://picsum.photos/id/1027/400/500" alt="李总监"
+                        <img src="https://picsum.photos/id/1039/400/500" alt="李总监"
                             class="w-full h-64 object-cover object-center">
                         <div class="p-6">
                             <h3 class="text-xl font-bold mb-1">李婷</h3>
@@ -370,7 +359,7 @@
                     </div>
 
                     <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md hover-lift">
-                        <img src="https://picsum.photos/id/1025/400/500" alt="王经理"
+                        <img src="https://picsum.photos/id/1048/400/500" alt="王经理"
                             class="w-full h-64 object-cover object-center">
                         <div class="p-6">
                             <h3 class="text-xl font-bold mb-1">王伟</h3>
@@ -384,7 +373,7 @@
                     </div>
 
                     <div class="bg-gray-50 rounded-xl overflow-hidden shadow-md hover-lift">
-                        <img src="https://picsum.photos/id/1062/400/500" alt="赵经理"
+                        <img src="https://picsum.photos/id/1035/400/500" alt="赵经理"
                             class="w-full h-64 object-cover object-center">
                         <div class="p-6">
                             <h3 class="text-xl font-bold mb-1">赵琳</h3>
